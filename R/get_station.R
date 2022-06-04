@@ -10,7 +10,7 @@
 #'
 get_station <- function(id){
   message(paste("Processing id", id, "..."))
-  link <- paste0("https://airnet.waqi.info/airnet/feed/hourly/", id)
+  link <- paste0("https://airnet.waqi.info/airnet/feed/hourly-cached/", id)
   ceva <- httr::content(httr::GET(link))
   if(ceva$status!="ok"){
     stop(ceva$detail)
