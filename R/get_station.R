@@ -13,7 +13,7 @@ get_station <- function(id){
   link <- paste0("https://airnet.waqi.info/airnet/feed/hourly/", id)
   ceva <- httr::content(httr::GET(link))
   if(ceva$status!="ok"){
-    return(NA)
+    stop(ceva$detail)
   } else {
     indicatori <- names(ceva$data)
     rez <- dplyr::tibble(ceva=ceva$data) %>%

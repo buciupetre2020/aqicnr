@@ -1,19 +1,17 @@
 edit_station <- function(x){
-  lat = x$g[[1]]
-  lon = x$g[[2]]
+  lat = x$geo[[1]]
+  lon = x$geo[[2]]
   address = x$n
-  id = x$x
-  u = x$u
-  c = x$c
-  a = x$a
-  S = x$S
-  return(data.frame("address"=address, "id"=id, "lat"=lat,
-                    "lon"=lon, "u"=u, "c"=c, "a"=a,"S"=S))
+  id = x$idx
+  u = x$utime
+  name = x$name
+  return(data.frame("id"=id,"name"=name, "lat"=lat,
+                    "lon"=lon, "time"=u))
 }
 
 edit_station <- purrr::possibly(edit_station,
-                                data.frame("address"=NA, "id"=NA, "lat"=NA,
-                                           "lon"=NA, "u"=NA, "c"=NA, "a"=NA, "S"=NA))
+                                data.frame("id"=NA,"name"=NA, "lat"=NA,
+                                           "lon"=NA, "time"=NA))
 
 
 #' Get all the stations in your chosen area.
