@@ -31,7 +31,7 @@ edit_station <- purrr::possibly(edit_station,
 #'
 stations <- function(llon, rlon, ulat, dlat){
   bounds <- paste(llon, dlat, rlon, ulat, sep=",")
-  statii <- httr::content(httr::POST("https://airnet.waqi.info/airnet/map/bounds",
+  statii <- httr::content(httr::POST("https://api.waqi.info/mapq2/bounds",
                                      body = list(bounds=bounds),
                                      encode = "multipart"))$data
   return(purrr::map_dfr(statii, edit_station))
