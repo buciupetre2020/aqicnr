@@ -1,6 +1,6 @@
 Package: aqicnr
 Title: Scraping Air Quality Data From aqicn.org Website
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Petre", "Buciu", , "buciu_petre2013@yahoo.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
