@@ -1,16 +1,3 @@
-#' A small function for datetime conversion
-#'
-#' @param x The time string returned by the `get_station` function.
-#'
-#' @return A datetime
-#' @export
-#'
-#' @examples
-edit_time <- function(x){
-  gsub("X|Z", " ", x) %>%
-    lubridate::parse_date_time(., "ymdHMS")
-}
-
 #' Get the air quality and air pollution data from a station
 #'
 #' @param id The ID of the station (Run stations() function to get these)
