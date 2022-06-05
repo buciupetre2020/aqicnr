@@ -1,3 +1,11 @@
+#' A small function for datetime conversion
+#'
+#' @param x The time string returned by the `get_station` function.
+#'
+#' @return A datetime
+#' @export
+#'
+#' @examples
 edit_time <- function(x){
   gsub("X|Z", " ", x) %>%
     lubridate::parse_date_time(., "ymdHMS")
@@ -25,8 +33,7 @@ get_station <- function(id){
       dplyr::mutate(indicator = indicatori) %>%
       tidyr::unnest(ceva) %>%
       tidyr::unnest_wider(ceva) %>%
-      dplyr::mutate(id = id) %>% dplyr::relocate(indicator) %>%
-      dplyr::mutate(time = edit_time(time))
+      dplyr::mutate(id = id) %>% dplyr::relocate(indicator)
   }
 return(rez)
 }
