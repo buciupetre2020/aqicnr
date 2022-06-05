@@ -1,12 +1,12 @@
-#' A small function for datetime conversion
+#' A small function for string->datetime conversion.
 #'
-#' @param x The time string returned by the `get_station` function.
+#' @param x The string from the time field.
 #'
-#' @return A datetime
+#' @return A datetime.
 #' @export
 #'
 #' @examples
-#' edit_time("2020-01-03T10:00:00Z")
+#' edit_time("2020-01-01T10:00:00Z")
 #'
 edit_time <- function(x){
   gsub("T|Z|X", " ", x) %>%
