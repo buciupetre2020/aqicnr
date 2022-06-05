@@ -1,3 +1,8 @@
+edit_time <- function(x){
+  gsub("X|Z", " ", x) %>%
+    lubridate::parse_date_time(., "ymdHMS")
+}
+
 #' Get the air quality and air pollution data from a station
 #'
 #' @param id The ID of the station (Run stations() function to get these)
@@ -20,7 +25,8 @@ get_station <- function(id){
       dplyr::mutate(indicator = indicatori) %>%
       tidyr::unnest(ceva) %>%
       tidyr::unnest_wider(ceva) %>%
-      dplyr::mutate(id = id) %>% dplyr::relocate(indicator)
+      dplyr::mutate(id = id) %>% dplyr::relocate(indicator) %>%
+      dplyr::mutate(time = edit_time(time))
   }
 return(rez)
 }
